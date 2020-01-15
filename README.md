@@ -1,5 +1,6 @@
 # TaskTrainingLevel
 A simple webapp to organise  and store training progress.
+Check my codepen for demo: https://codepen.io/busyvar/pen/mdyGJPb
 ## Functional details
 Each task has 5 level.
 User can add and remove any task.
