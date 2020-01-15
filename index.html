@@ -1,0 +1,24 @@
+<div class="container">
+        <header>
+            <h1>Application de gestion de taches</h1>
+        </header>
+        <template id="task_object">
+            <input class="touchtaskname" type="checkbox" name="summary">
+            <div id="progress_bar">
+            <input class="level" type="radio" checked name="t1"><input class="level" type="radio" name="t1"><input class="level" type="radio" name="t1" ><input class="level" type="radio" name="t1" ><input class="level" type="radio" name="t1" >
+            <div class="chart">
+              <div class="bar  white">
+                <div class="growing-bar"></div>
+              </div>
+            </div>
+          </div>
+           <div class="desc">
+             <label>Task name :</label><h3 contenteditable spellcheck="false" class="edittaskname"></h3><button  id="del_button">🗑</button>
+             <textarea  rows="10" spellcheck="false" placeholder="Enter description"></textarea>
+           </div>
+        </template>
+        <section id="tasklist">
+          <h2>liste de taches</h2>
+        </section>
+  <button onclick="addTask()">+</button>
+    </div> 
