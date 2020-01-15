@@ -1,3 +1,367 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" href="./style.css"/>
+		<link rel="script" href="./script.js"/>
+	</head>
+	<script>
+var taskNumber=0;
+function addTask()
+{
+  taskNumber++;
+  var tasklist = document.querySelector("#tasklist");
+  var newTask = document.querySelector("#task_object");
+  var taskContainer = document.createElement("article");
+  var clone = document.importNode(newTask.content, true);
+  var inputs = clone.querySelectorAll(".level");
+    var delBtn = clone.querySelector("#del_button");
+  
+      var currentNumber = taskNumber;
+        taskContainer.id= "task-"+currentNumber;
+        inputs[0].name = "task-"+currentNumber;
+        inputs[1].name = "task-"+currentNumber;
+        inputs[2].name = "task-"+currentNumber;
+        inputs[3].name = "task-"+currentNumber;
+        inputs[4].name = "task-"+currentNumber;
+  delBtn.onclick = function(){removeTask("task-"+currentNumber)};
+  
+  taskContainer.appendChild(clone);
+  tasklist.appendChild(taskContainer);
+}
+function removeTask(taskName)
+{
+    var task = document.querySelector("#"+taskName);
+  task.remove();
+
+}
+document.body.onload = function() {addTask()};
+	</script>
+<style>
+@import 'compass/reset';
+@import 'compass/css3';
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:700,300);
+:root
+{
+  --gray: #444;
+  --red: #ec008c;
+  --lime: #76c900;
+  --yellow: #f1c40f;
+  --orange: #dead00;
+  --blue:#58ccff;
+  --largeur-titre-tache: 200px;
+  --task-modal-color:grey;
+
+  --transitionDuration: .3s;
+  --transition: all var(--transitionDuration) ease-in-out;
+}
+
+body
+{
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1em;
+
+    text-align: center;
+
+    color: val(--gray);
+    background: #d0d0d0;
+}
+h2
+{
+  display:block;
+  //width:95px;
+  font-size:30px;
+  vertical-align:center;
+  line-height:50px;
+}
+section article 
+{
+    display:block;
+    width: 800px;
+  margin:auto;
+  margin-bottom:-100px;
+}
+#progress_bar
+{
+  display:inline-block;
+  width:300px;
+  margin-bottom:0px;
+}
+.chart
+{
+  z-index:-2;
+  display:inline-block;
+  position:relative;
+  width:300px;
+  height:50px;
+  top:-50px;
+  
+}
+.bar
+{
+  position: absolute;
+  z-index:-1;
+  width:inherit;
+  height: 100%;
+  font-size: 1.6em;
+  height: 50px;
+  background-color: #ddd;
+  border-radius:5px;
+  
+}
+
+.growing-bar
+{
+    transition: var(--transition);
+    height: 100%;
+    border-radius:5px 0px 0px 5px;
+}
+input[type="radio"]
+{
+  //box-sizing: border-box;
+  vertical-align:bottom;
+  text-align:center;
+  appearance:none;
+  -moz-appearance:none;
+  -webkit-appearance:none;
+  display:inline-block;
+  user-select:none;
+  padding: 13px;
+  margin: 0px;
+  width: 50px;
+  height:50px;
+  cursor: pointer;
+  transition: all .15s ease-in-out;
+  color: black;
+  border-radius: 0px;
+  background-color: rgba(white,0.3);
+}
+input[type="radio"]:not(:first-of-type):not(:last-of-type)
+{
+  counter-increment: boxes;
+}
+input[type="radio"]:not(:first-of-type):not(:last-of-type)::before
+{
+  content:counter(boxes, upper-roman);
+}
+input[type="radio"]:not(:last-of-type)
+{
+      border-right: 1px solid grey;
+
+}
+input:nth-child(5)
+{
+  border-right:0px;
+}
+input[type="radio"]:nth-child(2)
+{
+  border-left:0px;
+}
+input[type="radio"]:first-of-type::before
+{
+  content:"AP";
+}
+input[type="radio"]:first-of-type
+{
+  border-radius:5px 0px 0px 5px;;
+  //background-color:red;
+}
+
+input[type="radio"]:nth-child(4)::before
+{
+  content:counter(boxes, upper-roman);
+}
+input[type="radio"]:nth-child(5)::before
+{
+  content:counter(boxes, upper-roman);
+}
+input[type="radio"]:last-of-type::before
+{
+  content:"Acquis";
+}
+input[type="radio"]:last-of-type
+{
+  width:100px;
+  border-radius:0px 5px 5px 0px;
+  border-right:0px solid transparent;
+}
+input[type="radio"]:nth-of-type(1):checked ~ .chart .growing-bar
+{
+    width:16.8%;
+    background-color: var(--blue);
+}
+input[type="radio"]:nth-of-type(2):checked ~ .chart .growing-bar
+{
+    width:33%;
+    background-color: var(--red);
+}
+input[type="radio"]:nth-of-type(3):checked ~ .chart .growing-bar
+{
+    width:50%;
+    background-color:var(--orange);
+}
+input[type="radio"]:nth-of-type(4):checked ~ .chart .growing-bar
+{
+    width:66.8%;
+    background-color: var(--yellow);
+}
+input[type="radio"]:last-of-type:checked ~ .chart .growing-bar
+{
+    width:100%;
+    background-color: var(--lime);
+    border-radius:5px;
+}
+input[type="text"]
+{
+  z-index:-2;
+  height:44px;
+  width:150px;
+  overflow:hidden;
+  background:transparent;
+}
+details:not([open])
+{
+  position:relative;
+  width:30px;
+  
+}
+.edittaskname
+{
+  top:-100px;
+  left:-50px;
+  height:30px;
+  text-align:left;
+  //text-shadow:-150px -57px black;
+  text-shadow:none;
+  margin-top:20px;
+  width:var(--largeur-titre-tache);
+  border:1px solid black;
+  background:white;
+  color:black;
+}
+.desc
+{
+  position:relative;
+  display:block;
+  top:-50px;
+  width:503px;
+  margin-left:148px;
+}
+.desc label
+{
+  display:block;
+  position:relative;
+  left:30px;
+  top:25px;
+  width:100px;
+  font-size:16px;
+  user-select:none;
+}
+.touchtaskname:not(:checked) ~ .desc .edittaskname
+{
+  border:none;
+  color:transparent;
+  background:transparent;
+}
+.touchtaskname:checked~ .desc .edittaskname
+{
+  display:block;
+  width:var(--largeur-titre-tache);
+  margin:auto;
+  padding-top:10px;
+  padding-left:10px;
+  height:30px;
+}
+.touchtaskname:not(:checked) ~ .desc
+{
+  width:30px;
+  background:transparent;
+  color:grey!important;
+  border:none!important;
+    z-index:-3;
+  background:transparent;
+  border-style:none;
+  user-select:none;
+  top:-107px;
+  left:355px;
+}
+.touchtaskname:not(:checked) ~ .desc *:not(.edittaskname)
+{
+  display:none!important;
+}
+.touchtaskname:not(:checked) ~ .desc .edittaskname
+{
+  display:relative;
+  text-shadow: -350px 0px black;
+  //text-align:center;
+}
+.touchtaskname
+{
+  margin:0px;
+  vertical-align:top;
+  display:inline-block;
+  appearance:none;
+  -moz-appearance:none;
+  -webkit-appearance:none;
+  width:var(--largeur-titre-tache);
+  height:50px;
+  color:black;
+  cursor:pointer;
+  background:transparent;
+  z-index:-30;
+  border:1px solid black;
+}
+.touchtaskname:checked
+{
+  background:var(--task-modal-color);
+  color:white;
+}
+.touchtaskname:checked ~ .desc
+{
+  background:var(--task-modal-color);
+  color:white;
+}
+.touchtaskname:checked:hover::before
+{
+  background:lightgray;
+    padding-right:38px;
+  color:black;
+
+}
+ .touchtaskname:not(:checked):hover::before
+{
+  content:"edit";
+  font-size:35px;
+  padding-left:70px;
+  padding-right:65px;
+  background:lightgray;
+}
+.touchtaskname:checked::before
+{
+  padding-left:40px;
+  content:"Fermer";
+  font-size:35px;
+}
+textarea
+{
+  resize:none;
+  width:90%;
+  margin-bottom:5px;
+}
+#del_button
+{
+  display:inline-block;
+  position:relative;
+  top: -25px;
+  bottom:20px;
+  right: -190px;
+  font-size:26px;
+  margin-bottom:-10px;
+  margin-top:-20px;
+}
+</style>
+<body>
 <div class="container">
         <header>
             <h1>Application de gestion de taches</h1>
@@ -7,7 +371,7 @@
             <div id="progress_bar">
             <input class="level" type="radio" checked name="t1"><input class="level" type="radio" name="t1"><input class="level" type="radio" name="t1" ><input class="level" type="radio" name="t1" ><input class="level" type="radio" name="t1" >
             <div class="chart">
-              <div class="bar  white">
+              <div class="bar">
                 <div class="growing-bar"></div>
               </div>
             </div>
@@ -22,3 +386,5 @@
         </section>
   <button onclick="addTask()">+</button>
     </div> 
+</body>
+</html>
