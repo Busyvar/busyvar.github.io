@@ -60,12 +60,8 @@ body
     font-family: 'Open Sans', sans-serif;
     font-size: 16px;
     font-weight: 300;
-    line-height: 1em;
-
     text-align: center;
-
-    color: val(--gray);
-    background: #d0d0d0;
+    background: #eee;
 }
 h2
 {
@@ -77,16 +73,15 @@ h2
 }
 section article 
 {
-    display:block;
-    width: 800px;
-  margin:auto;
-  margin-bottom:-100px;
+	margin-bottom:-50px;
+	min-width:520px;
 }
 #progress_bar
 {
   display:inline-block;
   width:300px;
   margin-bottom:0px;
+  height:100%;
 }
 .chart
 {
@@ -220,66 +215,89 @@ input[type="text"]
   overflow:hidden;
   background:transparent;
 }
-details:not([open])
-{
-  position:relative;
-  width:30px;
-  
-}
 .edittaskname
 {
-  top:-100px;
-  left:-50px;
   height:30px;
   text-align:left;
-  //text-shadow:-150px -57px black;
   text-shadow:none;
-  margin-top:20px;
+  margin:0px;
+  padding-bottom:0px;
   width:var(--largeur-titre-tache);
   border:1px solid black;
   background:white;
   color:black;
+  font-size:24px;
 }
 .desc
 {
   position:relative;
   display:block;
   top:-50px;
-  width:503px;
-  margin-left:148px;
+  width:100%;
+  max-width:500px;
+  margin:auto;
+}
+.desc_header
+{
+	height:60px;
+	margin-top:2px;
+	margin-bottom:5px;
+	padding-top:5px;
+
+}
+.desc_header *
+{
+	height:60px;
+	vertical-align:top;
+}
+.desc_header button
+{
+	display:inline-block;
 }
 .desc label
 {
-  display:block;
-  position:relative;
-  left:30px;
-  top:25px;
+  display:inline-block;
   width:100px;
   font-size:16px;
   user-select:none;
+  position:relative;
 }
-.touchtaskname:not(:checked) ~ .desc .edittaskname
+.touchtaskname:not(:checked) ~ .desc .desc_header *:not(.edittaskname)
 {
   border:none;
   color:transparent;
   background:transparent;
 }
-.touchtaskname:checked~ .desc .edittaskname
+
+.touchtaskname:not(:checked) ~ .desc .desc_header .edittaskname
 {
-  display:block;
-  width:var(--largeur-titre-tache);
-  margin:auto;
-  padding-top:10px;
+  position:absolute;
+  left:-592px;
+  position: absolute;
+  height: 47px;
+  background: transparent;
+  border: none;
+  top: 0px;
+  width: 196px;
+  padding-left: 5px;
+}
+
+.touchtaskname:checked~ .desc .desc_header .edittaskname
+{
+  display:inline-block;
+  max-width:var(--largeur-titre-tache);
+  padding-top:0px;
   padding-left:10px;
-  height:30px;
+  border-radius:5px;
+  border:none;
 }
 .touchtaskname:not(:checked) ~ .desc
 {
   width:30px;
   background:transparent;
-  color:grey!important;
+  color:transparent!important;
   border:none!important;
-    z-index:-3;
+  z-index:-3;
   background:transparent;
   border-style:none;
   user-select:none;
@@ -288,13 +306,11 @@ details:not([open])
 }
 .touchtaskname:not(:checked) ~ .desc *:not(.edittaskname)
 {
-  display:none!important;
-}
-.touchtaskname:not(:checked) ~ .desc .edittaskname
-{
-  display:relative;
-  text-shadow: -350px 0px black;
-  //text-align:center;
+  background:transparent;
+  color:transparent;
+  position:absolute;
+  border:none;
+  z-index:-100;
 }
 .touchtaskname
 {
@@ -329,14 +345,6 @@ details:not([open])
   color:black;
 
 }
- .touchtaskname:not(:checked):hover::before
-{
-  content:"edit";
-  font-size:35px;
-  padding-left:70px;
-  padding-right:65px;
-  background:lightgray;
-}
 .touchtaskname:checked::before
 {
   padding-left:40px;
@@ -348,17 +356,21 @@ textarea
   resize:none;
   width:90%;
   margin-bottom:5px;
+  font-size:20px;
 }
 #del_button
 {
   display:inline-block;
-  position:relative;
-  top: -25px;
-  bottom:20px;
-  right: -190px;
   font-size:26px;
-  margin-bottom:-10px;
-  margin-top:-20px;
+  position:relative;
+}
+@media screen and (max-width: 640px)
+{
+	.desc lablel
+		{
+			display:none;
+	}
+
 }
 </style>
 <body>
@@ -377,7 +389,9 @@ textarea
             </div>
           </div>
            <div class="desc">
-             <label>Task name :</label><h3 contenteditable spellcheck="false" class="edittaskname"></h3><button  id="del_button">🗑</button>
+			 <div class="desc_header">
+               <input placeholder="Taskname" name="title" contenteditable spellcheck="false" class="edittaskname"></input><button  id="del_button">🗑</button>
+			 </div>
              <textarea  rows="10" spellcheck="false" placeholder="Enter description"></textarea>
            </div>
         </template>
