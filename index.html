@@ -1,38 +1,10 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		<meta charset="utf8"/>
 		<link rel="stylesheet" href="./style.css"/>
 		<link rel="script" href="./script.js"/>
 	</head>
-	<script>
-var taskNumber=0;
-function addTask()
-{
-  taskNumber++;
-  let currentNumber = taskNumber;
-  let taskContainer = document.createElement("article");
-  let taskLabel = "task-"+taskNumber;
-  taskContainer.id= taskLabel;
-
-  let clone = document.importNode( document.querySelector("#task_object").content, true);
-  clone.querySelectorAll(".level")
-		.forEach(e => e.name = taskLabel);
-  clone.querySelector("#del_button")
-		.onclick = () => removeTask(taskLabel);
-  
-  
-  document.querySelector("#tasklist")
-		.appendChild(taskContainer)
-			.appendChild(clone);
-}
-function removeTask(taskName)
-{
-    var task = document.querySelector("#"+taskName);
-  task.remove();
-
-}
-document.body.onload = function() {addTask()};
-	</script>
 <style>
 @import 'compass/reset';
 @import 'compass/css3';
@@ -391,3 +363,32 @@ textarea
     </div> 
 </body>
 </html>
+<script>
+var taskNumber=0;
+function addTask()
+{
+  taskNumber++;
+  let currentNumber = taskNumber;
+  let taskContainer = document.createElement("article");
+  let taskLabel = "task-"+taskNumber;
+  taskContainer.id= taskLabel;
+
+  let clone = document.importNode( document.querySelector("#task_object").content, true);
+  clone.querySelectorAll(".level")
+		.forEach(e => e.name = taskLabel);
+  clone.querySelector("#del_button")
+		.onclick = () => removeTask(taskLabel);
+  
+  
+  document.querySelector("#tasklist")
+		.appendChild(taskContainer)
+			.appendChild(clone);
+}
+function removeTask(taskName)
+{
+    var task = document.querySelector("#"+taskName);
+  task.remove();
+
+}
+document.body.onload = () => addTask();
+</script>
