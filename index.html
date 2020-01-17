@@ -268,13 +268,9 @@ input[type="text"]
   border-style:none;
   user-select:none;
 }
-.touchtaskname:not(:checked) ~ .desc *:not(.edittaskname)
+.touchtaskname:not(:checked) ~ .desc *
 {
-  background:transparent;
-  color:transparent;
-  position:absolute;
-  border:none;
-  z-index:-100;
+	display:none;
 }
 .touchtaskname
 {
@@ -291,6 +287,10 @@ input[type="text"]
   background:transparent;
   z-index:-30;
   border:1px solid black;
+  font-size:26px;
+  padding-top:5px;
+  padding-left:5px;
+  overflow:hidden;
 }
 .touchtaskname:checked
 {
@@ -304,8 +304,7 @@ input[type="text"]
 }
 .touchtaskname:checked::before
 {
-  padding-left:3px;
-  content:"Fermer";
+  //content:"Fermer";
   font-size:35px;
 }
 textarea
@@ -342,7 +341,7 @@ textarea
             <h1>Application de gestion de taches</h1>
         </header>
         <template id="task_object">
-            <input class="touchtaskname" type="checkbox" name="summary">
+			<input class="touchtaskname" type="checkbox" name="summary"></input>
             <div id="progress_bar">
             <input class="level" type="radio" checked name="t1"><input class="level" type="radio" name="t1"><input class="level" type="radio" name="t1" ><input class="level" type="radio" name="t1" ><input class="level" type="radio" name="t1" >
             <div class="chart">
@@ -353,7 +352,7 @@ textarea
           </div>
            <div class="desc">
 			 <div class="desc_header">
-               <input placeholder="Taskname" name="title" contenteditable spellcheck="false" class="edittaskname"></input><button  id="del_button">🗑</button>
+				 <input onblur="update_title()" id="task_title_input"  placeholder="Taskname" name="t1" spellcheck="false" class="edittaskname"></input><button  id="del_button">🗑</button>
 			 </div>
              <textarea  rows="10" spellcheck="false" placeholder="Enter description"></textarea>
            </div>
@@ -380,17 +379,32 @@ function addTask()
 		.forEach(e => e.name = taskLabel);
   clone.querySelector("#del_button")
 		.onclick = () => removeTask(taskLabel);
+  let tti = clone.querySelector("#task_title_input")
+  let ttn = clone.querySelector(".touchtaskname");
+  tti.name = taskLabel;
+  tti.addEventListener('blur', () => { ttn.innerText=tti.value;});
+  tti.addEventListener('keypress', (event) => {
+    if(event.keyCode==13){event.srcElement.blur();};
+  });
   
   
   document.querySelector("#tasklist")
 		.appendChild(taskContainer)
 			.appendChild(clone);
 }
-function removeTask(taskName)
-{
-    var task = document.querySelector("#"+taskName);
-  task.remove();
+function removeTask(taskName) { document.querySelector("#"+taskName).remove();}
 
+
+function update_title()
+{
 }
-document.body.onload = () => addTask();
+function unfocus()
+{
+	console.log(event);
+	if(event.keyCode==13){document.getElementById("task_title_input").blur();}
+}
+
+document.body.onload = () => {
+	addTask();
+}
 </script>
