@@ -338,13 +338,6 @@ input[type="text"]
   background:var(--task-modal-color);
   color:white;
 }
-.touchtaskname:checked:hover::before
-{
-  background:lightgray;
-    padding-right:38px;
-  color:black;
-
-}
 .touchtaskname:checked::before
 {
   padding-left:40px;
@@ -364,13 +357,12 @@ textarea
   font-size:26px;
   position:relative;
 }
-@media screen and (max-width: 640px)
-{
-	.desc lablel
-		{
-			display:none;
-	}
 
+#add_task_control
+{
+	width:3em;
+	height:3em;
+	font-size:30px;
 }
 </style>
 <body>
@@ -398,7 +390,7 @@ textarea
         <section id="tasklist">
           <h2>liste de taches</h2>
         </section>
-  <button onclick="addTask()">+</button>
+  <button id="add_task_control" onclick="addTask()">+</button>
     </div> 
 </body>
 </html>
