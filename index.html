@@ -9,17 +9,17 @@ var taskNumber=0;
 function addTask()
 {
   taskNumber++;
-  var tasklist = document.querySelector("#tasklist");
-  var newTask = document.querySelector("#task_object");
-  var taskContainer = document.createElement("article");
-  var clone = document.importNode(newTask.content, true);
-  var inputs = clone.querySelectorAll(".level");
+  let currentNumber = taskNumber;
+  let tasklist = document.querySelector("#tasklist");
+  let newTask = document.querySelector("#task_object");
+  let taskContainer = document.createElement("article");
+  let clone = document.importNode(newTask.content, true);
+  let inputs = clone.querySelectorAll(".level");
     var delBtn = clone.querySelector("#del_button");
   
-      var currentNumber = taskNumber;
         taskContainer.id= "task-"+currentNumber;
 		inputs.forEach(e => e.name ="task-"+currentNumber);
-  delBtn.onclick = function(){removeTask("task-"+currentNumber)};
+	delBtn.onclick = () => removeTask("task-"+currentNumber);
   
   taskContainer.appendChild(clone);
   tasklist.appendChild(taskContainer);
