@@ -18,11 +18,7 @@ function addTask()
   
       var currentNumber = taskNumber;
         taskContainer.id= "task-"+currentNumber;
-        inputs[0].name = "task-"+currentNumber;
-        inputs[1].name = "task-"+currentNumber;
-        inputs[2].name = "task-"+currentNumber;
-        inputs[3].name = "task-"+currentNumber;
-        inputs[4].name = "task-"+currentNumber;
+		inputs.forEach(e => e.name ="task-"+currentNumber);
   delBtn.onclick = function(){removeTask("task-"+currentNumber)};
   
   taskContainer.appendChild(clone);
