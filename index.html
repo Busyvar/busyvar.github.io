@@ -41,7 +41,6 @@ h2
 section article 
 {
 	margin-bottom:-50px;
-	min-width:520px;
 }
 #progress_bar
 {
@@ -189,7 +188,6 @@ input[type="text"]
   text-shadow:none;
   margin:0px;
   padding-bottom:0px;
-  width:var(--largeur-titre-tache);
   border:1px solid black;
   background:white;
   color:black;
@@ -201,7 +199,6 @@ input[type="text"]
   display:block;
   top:-50px;
   width:100%;
-  max-width:500px;
   margin:auto;
 }
 .desc_header
@@ -238,25 +235,26 @@ input[type="text"]
 
 .touchtaskname:not(:checked) ~ .desc .desc_header .edittaskname
 {
-  position:absolute;
-  left:-592px;
+  left:-530%;
   position: absolute;
   height: 47px;
   background: transparent;
   border: none;
-  top: 0px;
-  width: 196px;
+  top: -55px;
+  width: 392px;
   padding-left: 5px;
 }
 
 .touchtaskname:checked~ .desc .desc_header .edittaskname
 {
   display:inline-block;
-  max-width:var(--largeur-titre-tache);
   padding-top:0px;
   padding-left:10px;
   border-radius:5px;
   border:none;
+  float:left;
+  margin-left:20px;
+  width:50%;
 }
 .touchtaskname:not(:checked) ~ .desc
 {
@@ -268,8 +266,6 @@ input[type="text"]
   background:transparent;
   border-style:none;
   user-select:none;
-  top:-107px;
-  left:355px;
 }
 .touchtaskname:not(:checked) ~ .desc *:not(.edittaskname)
 {
@@ -287,7 +283,7 @@ input[type="text"]
   appearance:none;
   -moz-appearance:none;
   -webkit-appearance:none;
-  width:var(--largeur-titre-tache);
+  width:50%;
   height:50px;
   color:black;
   cursor:pointer;
@@ -307,14 +303,14 @@ input[type="text"]
 }
 .touchtaskname:checked::before
 {
-  padding-left:40px;
+  padding-left:3px;
   content:"Fermer";
   font-size:35px;
 }
 textarea
 {
   resize:none;
-  width:90%;
+  width:95%;
   margin-bottom:5px;
   font-size:20px;
 }
@@ -323,6 +319,8 @@ textarea
   display:inline-block;
   font-size:26px;
   position:relative;
+  float:right;
+  margin-right:20px;
 }
 
 #add_task_control
@@ -330,6 +328,11 @@ textarea
 	width:3em;
 	height:3em;
 	font-size:30px;
+}
+#tasklist
+{
+	max-width:800px;
+	margin:auto;
 }
 </style>
 <body>
