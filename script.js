@@ -37,4 +37,4 @@ function unfocus()
 	if(event.keyCode==13){document.getElementById("task_title_input").blur();}
 }
 
-window.onload = addTask();
+window.onload = ()=>{addTask()};
