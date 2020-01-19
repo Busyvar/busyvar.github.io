@@ -185,7 +185,7 @@ input[type="text"]
   background:white;
   color:black;
   font-size:24px;
-  width:70%;
+  width:60%;
   float:left;
   margin-left:5px;
 }
@@ -271,6 +271,7 @@ textarea
   position:relative;
   float:right;
   margin-right:5px;
+  width:25%;
 }
 
 #add_task_control
@@ -287,5 +288,5 @@ textarea
 details[open] ~ #progress_bar
 {
   position:relative;
-  top:-420px;
+  //top:-420px;//for iphone....
 }
