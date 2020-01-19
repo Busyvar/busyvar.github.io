@@ -287,5 +287,5 @@ textarea
 details[open] ~ #progress_bar
 {
   position:relative;
-  top:-356px;
+  top:-420px;
 }
