@@ -220,51 +220,7 @@ input[type="text"]
   user-select:none;
   position:relative;
 }
-.touchtaskname:not(:checked) ~ .desc .desc_header *:not(.edittaskname)
-{
-  border:none;
-  color:transparent;
-  background:transparent;
-}
 
-.touchtaskname:not(:checked) ~ .desc .desc_header .edittaskname
-{
-  left:-530%;
-  position: absolute;
-  height: 47px;
-  background: transparent;
-  border: none;
-  top: -55px;
-  width: 392px;
-  padding-left: 5px;
-}
-
-.touchtaskname:checked~ .desc .desc_header .edittaskname
-{
-  display:inline-block;
-  padding-top:0px;
-  padding-left:10px;
-  border-radius:5px;
-  border:none;
-  float:left;
-  margin-left:20px;
-  width:50%;
-}
-.touchtaskname:not(:checked) ~ .desc
-{
-  width:30px;
-  background:transparent;
-  color:transparent!important;
-  border:none!important;
-  z-index:-3;
-  background:transparent;
-  border-style:none;
-  user-select:none;
-}
-.touchtaskname:not(:checked) ~ .desc *
-{
-	display:none;
-}
 .touchtaskname
 {
   margin:0px;
@@ -277,25 +233,26 @@ input[type="text"]
   height:50px;
   color:black;
   cursor:pointer;
-  background:transparent;
   z-index:-30;
   border:1px solid black;
   font-size:26px;
   padding-top:5px;
   padding-left:5px;
   overflow:hidden;
+  user-select:none;
 }
-.touchtaskname:checked
+.touchtaskname[open]
+{
+  //background:var(--task-modal-color);
+  backgrounnd:red;
+  color:white;
+}
+.touchtaskname[open] ~ .desc
 {
   background:var(--task-modal-color);
   color:white;
 }
-.touchtaskname:checked ~ .desc
-{
-  background:var(--task-modal-color);
-  color:white;
-}
-.touchtaskname:checked::before
+.touchtaskname[open]::before
 {
   //content:"Fermer";
   font-size:35px;
