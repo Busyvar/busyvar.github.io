@@ -198,15 +198,14 @@ input[type="text"]
 }
 .desc_header
 {
-	height:60px;
+	height:50px;
 	margin-top:2px;
-	margin-bottom:5px;
-	padding-top:5px;
+  padding-top:0px;
 
 }
 .desc_header *
 {
-	height:60px;
+	height:50px;
 	vertical-align:top;
 }
 .desc_header button
