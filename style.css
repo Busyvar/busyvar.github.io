@@ -255,23 +255,13 @@ input[type="text"]
   backgrounnd:red;
   color:white;
 }
-.touchtaskname[open] ~ .desc
-{
-  background:var(--task-modal-color);
-  color:white;
-}
-.touchtaskname[open]::before
-{
-  //content:"Fermer";
-  font-size:35px;
-}
 textarea
 {
   resize:none;
-  width:96%;
+  width:95%;
   margin-bottom:5px;
-  margin-left:5px;
-  margin-right:5px;
+  //margin-left:5px;
+  //margin-right:5px;
   font-size:20px;
 }
 #del_button
@@ -293,4 +283,9 @@ textarea
 {
 	max-width:800px;
 	margin:auto;
+}
+details[open] ~ #progress_bar
+{
+  position:relative;
+  top:-356px;
 }
