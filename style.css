@@ -38,7 +38,8 @@ section article
 }
 #progress_bar
 {
-  display:inline-block;
+  display:block;
+  margin-left:155px;
   width:300px;
   margin-bottom:0px;
   height:57px;
