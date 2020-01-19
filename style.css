@@ -92,6 +92,10 @@ input[type="radio"]
   background-color: rgba(white,0.3);
   font-size:24px;
   text-align:center;
+  border-top:none;
+  border-bottom:none;
+  border-right: 1px solid grey;
+  border-left: none;
 }
 input[type="radio"]:not(:first-of-type):not(:last-of-type)
 {
@@ -101,18 +105,13 @@ input[type="radio"]:not(:first-of-type):not(:last-of-type)::before
 {
   content:counter(boxes, upper-roman);
 }
-input[type="radio"]:not(:last-of-type)
-{
-      border-right: 1px solid grey;
-
-}
 input:nth-child(5)
 {
-  border-right:0px;
+  border-right:none;
 }
 input[type="radio"]:nth-child(2)
 {
-  border-left:0px;
+  border-left:none;
 }
 input[type="radio"]:first-of-type::before
 {
@@ -122,6 +121,7 @@ input[type="radio"]:first-of-type
 {
   border-radius:5px 0px 0px 5px;;
   //background-color:red;
+  border-left:none;
 }
 
 input[type="radio"]:nth-child(4)::before
