@@ -152,7 +152,9 @@ tasklist.restore();
 init();
 function init()
 {
-  document.querySelector("#add_task_control").addEventListener("click", ()=>view.create(new Task()));
+  document.querySelector("#add_task_control").addEventListener("click", ()=>{
+    console.log("ask for task to be added");
+    view.create(new Task())});
   //document.querySelector("#cache-btn").addEventListener("click", clearCache);
   //document.querySelector("#cache-log").addEventListener("click", log_storage);
 }
