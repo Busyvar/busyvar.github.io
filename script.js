@@ -27,7 +27,9 @@ class View {
   create(t) {
     console.log("create task:", t);
     let taskContainer = document.createElement("article");
-    let dupNode = document.importNode( document.querySelector("#task_object").content, true);
+    let template = document.querySelector("#task_object").content;
+    console.log(template);
+    let dupNode = document.importNode( template.content, true);
     let tti = dupNode.querySelector("#task_title_input");
     let trashBtn = dupNode.querySelector("#del_button");
     let desc = dupNode.querySelector("#description");
