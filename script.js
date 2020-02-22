@@ -149,9 +149,7 @@ class TaskList{
 
 var tasklist = new TaskList();
 var view = new View();
-tasklist.restore();
 
-init();
 function init()
 {
   document.querySelector("#add_task_control").addEventListener("click", ()=>{
@@ -159,7 +157,10 @@ function init()
     view.create(new Task())});
   //document.querySelector("#cache-btn").addEventListener("click", clearCache);
   //document.querySelector("#cache-log").addEventListener("click", log_storage);
+  tasklist.restore();
+
 }
+document.onload = init();
 
 function log_storage(){
   console.log(localStorage.getItem("tasklist"));
