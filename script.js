@@ -160,7 +160,6 @@ function init()
   tasklist.restore();
 
 }
-window.onload = init();
 
 function log_storage(){
   console.log(localStorage.getItem("tasklist"));
