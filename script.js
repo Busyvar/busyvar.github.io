@@ -9,7 +9,6 @@ function updateData(event) {
   }
 }
 
-const container = document.querySelector("#tasklist");
 const clearCache = ()=>localStorage.setItem("tasklist",[]);
 
 class View {
@@ -18,7 +17,7 @@ class View {
   }
   remove(e) {
     console.log("remove");
-    container.removeChild(e.target.parentNode.parentNode.parentNode.parentNode);
+    document.querySelector("#tasklist").removeChild(e.target.parentNode.parentNode.parentNode.parentNode);
     console.log(tasklist.list);
     tasklist.list.splice(e.target.parentNode,1);
     console.log(tasklist.list);
@@ -55,7 +54,7 @@ class View {
       if(event.keyCode==13){event.target.blur()};
     });
 
-    container.appendChild(taskContainer)
+    document.querySelector("#tasklist").appendChild(taskContainer)
       .appendChild(dupNode);
     tasklist.addTaskToList(t);
   }
