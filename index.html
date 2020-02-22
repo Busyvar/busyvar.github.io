@@ -13,27 +13,26 @@
             <h1>Entraînement</h1>
         </header>
         <template id="task_object">
-          <details id="task_title_show"> <summary class="touchtaskname">Titre</summary>
-            <div class="desc">
-			 <div class="desc_header">
-				 <input  id="task_title_input"  placeholder="Taskname" name="t1" spellcheck="false" class="edittaskname"></input><button  id="del_button">🗑</button>
-			 </div>
-             <textarea  rows="10" spellcheck="false" placeholder="Enter description"></textarea>
-           </div>
-          </details>
-            <div id="progress_bar">
-            <input class="level" type="radio" name="t1"><input class="level" type="radio" name="t1"><input class="level" type="radio" name="t1" ><input class="level" type="radio" name="t1" ><input class="level" type="radio" name="t1" >
-            <div class="chart">
-              <div class="bar">
-                <div class="growing-bar"></div>
+            <details id="task_title_show"> <summary class="touchtaskname">Titre</summary>
+              <div class="desc">
+         <div class="desc_header">
+           <input  id="task_title_input"  placeholder="Taskname" name="t1" spellcheck="false" class="edittaskname"></input><button  id="del_button">🗑</button>
+         </div>
+               <textarea  id="description" rows="10" spellcheck="false" placeholder="Enter description"></textarea>
+             </div>
+            </details>
+              <div id="progress_bar">
+              <input class="level" type="radio"  name="t1" value="0"><input class="level" type="radio" name="t1" value="1"><input class="level" type="radio" name="t1"  value="2"><input class="level" type="radio" name="t1"  value="3"><input class="level" type="radio" name="t1" value="4" >
+              <div class="chart">
+                <div class="bar">
+                  <div class="growing-bar"></div>
+                </div>
               </div>
             </div>
-          </div>
-           
         </template>
         <section id="tasklist">
         </section>
     </div> 
-  <button id="add_task_control" onclick="addTask()">+</button>
+  <button id="add_task_control">+</button>
 </body>
 </html>
